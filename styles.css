@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  color: #333;
+}
+
+.container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+}
+
+.title {
+  text-align: center;
+  color: #004e92;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  font-size: 16px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 15px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.question {
+  margin-bottom: 20px;
+}
+
+.question p {
+  font-size: 18px;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.result {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+#result h2 {
+  color: #007bff;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#result-text {
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+}
+
+
+  
+  

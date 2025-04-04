@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Vocacional - Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container" id="login-container">
+    <h1 class="title">Bienvenido al Test Vocacional</h1>
+    <p>Identifica tus intereses, habilidades y preferencias para encontrar tu carrera profesional ideal.</p>
+    <form id="login-form">
+      <div class="input-group">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" required placeholder="Ingresa tu nombre de usuario">
+      </div>
+      <div class="input-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required placeholder="Ingresa tu contraseña">
+      </div>
+      <button type="submit" class="submit-btn">Iniciar sesión</button>
+    </form>
+  </div>
+
+  <div class="container hidden" id="quiz-container">
+    <h1 class="title">Test Vocacional</h1>
+    <form id="quiz-form">
+      <!-- Pregunta 1 -->
+      <div class="question">
+        <p>¿Cómo te describes mejor?</p>
+        <label>
+          <input type="radio" name="q1" value="Analítico"> Analítico y lógico
+        </label>
+        <label>
+          <input type="radio" name="q1" value="Creativo"> Creativo y expresivo
+        </label>
+        <label>
+          <input type="radio" name="q1" value="Empático"> Empático y sociable
+        </label>
+        <label>
+          <input type="radio" name="q1" value="Práctico"> Práctico y orientado a la acción
+        </label>
+      </div>
+
+      <!-- Pregunta 2 -->
+      <div class="question">
+        <p>¿Qué actividades prefieres hacer en tu tiempo libre?</p>
+        <label>
+          <input type="radio" name="q2" value="Tecnología"> Experimentar con nuevas tecnologías
+        </label>
+        <label>
+          <input type="radio" name="q2" value="Arte"> Pintar, escribir, o crear música
+        </label>
+        <label>
+          <input type="radio" name="q2" value="Ayudar"> Voluntariado o trabajar con personas
+        </label>
+        <label>
+          <input type="radio" name="q2" value="Deporte"> Practicar deportes o actividades físicas
+        </label>
+      </div>
+
+      <!-- Pregunta 3 -->
+      <div class="question">
+        <p>¿Cómo prefieres enfrentar los desafíos?</p>
+        <label>
+          <input type="radio" name="q3" value="Resolución lógica"> Analizo la situación y busco soluciones lógicas.
+        </label>
+        <label>
+          <input type="radio" name="q3" value="Pensamiento creativo"> Busco soluciones innovadoras y originales.
+        </label>
+        <label>
+          <input type="radio" name="q3" value="Colaboración"> Prefiero trabajar con otros para encontrar la mejor solución.
+        </label>
+        <label>
+          <input type="radio" name="q3" value="Acción inmediata"> Actúo rápidamente para resolver el problema.
+        </label>
+      </div>
+
+      <!-- Pregunta 4 -->
+      <div class="question">
+        <p>¿Qué tipo de entorno laboral te atrae más?</p>
+        <label>
+          <input type="radio" name="q4" value="Oficina"> Una oficina con estructura y tareas organizadas.
+        </label>
+        <label>
+          <input type="radio" name="q4" value="Creativo"> Un entorno flexible, donde la creatividad y la innovación son clave.
+        </label>
+        <label>
+          <input type="radio" name="q4" value="Social"> Un entorno dinámico, donde interactúas con diferentes personas.
+        </label>
+        <label>
+          <input type="radio" name="q4" value="Práctico"> Un entorno donde puedo hacer cosas prácticas y ver resultados tangibles.
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn">Ver Resultado</button>
+    </form>
+
+    <div id="result" class="result hidden">
+      <h2>Tu Vocación es:</h2>
+      <p id="result-text"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
