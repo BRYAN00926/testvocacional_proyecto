@@ -1,59 +1,73 @@
-// Datos de ejemplo para login
-const users = [
-  { username: 'usuario1', password: '12345' },
-  { username: 'usuario2', password: '67890' }
-];
+document.getElementById('login-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const user = document.getElementById('username').value.trim();
+  const pass = document.getElementById('password').value.trim();
 
-// Función para manejar el login
-document.getElementById('login-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-
-  const user = users.find(u => u.username === username && u.password === password);
-
-  if (user) {
-    // Si el login es exitoso, muestra el test vocacional
+  // Ejemplo básico, puedes agregar validación real o conexión backend
+  if (user && pass) {
     document.getElementById('login-container').classList.add('hidden');
     document.getElementById('quiz-container').classList.remove('hidden');
   } else {
-    alert('Usuario o contraseña incorrectos');
+    alert("Por favor, completa ambos campos.");
   }
 });
 
-// Lógica para procesar el test vocacional
-document.getElementById('quiz-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  let answers = {
-    q1: document.querySelector('input[name="q1"]:checked')?.value,
-    q2: document.querySelector('input[name="q2"]:checked')?.value,
-    q3: document.querySelector('input[name="q3"]:checked')?.value,
-    q4: document.querySelector('input[name="q4"]:checked')?.value
-  };
-
-  if (!answers.q1 || !answers.q2 || !answers.q3 || !answers.q4) {
-    alert("Por favor, responde todas las preguntas.");
+document.getElementById('quiz-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const form = e.target;
+  const answers = [...form.querySelectorAll('input[type="radio"]:checked')];
+  
+  if (answers.length < 5) {
+    alert('Por favor responde todas las preguntas.');
     return;
   }
 
-  // Procesar el resultado
-  let resultText = "";
+  const results = answers.map(ans => ans.value);
+  let resultado = '';
+  const contador = {};
 
-  if (answers.q1 === "Analítico" && answers.q2 === "Tecnología" && answers.q3 === "Resolución lógica" && answers.q4 === "Oficina") {
-    resultText = "Tu vocación podría ser Ingeniería de Sistemas o Investigación Científica.";
-  } else if (answers.q1 === "Creativo" && answers.q2 === "Arte" && answers.q3 === "Pensamiento creativo" && answers.q4 === "Creativo") {
-    resultText = "Tu vocación podría ser Diseño Gráfico o Producción Artística.";
-  } else if (answers.q1 === "Empático" && answers.q2 === "Ayudar" && answers.q3 === "Colaboración" && answers.q4 === "Social") {
-    resultText = "Tu vocación podría ser Psicología o Trabajo Social.";
-  } else if (answers.q1 === "Práctico" && answers.q2 === "Deporte" && answers.q3 === "Acción inmediata" && answers.q4 === "Práctico") {
-    resultText = "Tu vocación podría ser Educación Física o Medicina Deportiva.";
-  } else {
-    resultText = "Tu vocación es explorar más opciones. Sigue investigando y probando diferentes campos.";
+  results.forEach(res => {
+    contador[res] = (contador[res] || 0) + 1;
+  });
+
+  let max = 0;
+  let final = '';
+  for (let clave in contador) {
+    if (contador[clave] > max) {
+      max = contador[clave];
+      final = clave;
+    }
   }
 
-  document.getElementById('result-text').innerText = resultText;
+  switch (final) {
+    case 'Investigación':
+    case 'Ciencias':
+    case 'Analisis':
+      resultado = "Podrías destacar en carreras como Ingeniería, Medicina o Ciencias Exactas.";
+      break;
+    case 'Diseño':
+    case 'Creatividad':
+      resultado = "Tu camino puede estar en Artes, Comunicación, Publicidad o Diseño Gráfico.";
+      break;
+    case 'Servicio':
+    case 'Comunicacion':
+      resultado = "Tienes vocación para Psicología, Educación, Trabajo Social o Enfermería.";
+      break;
+    case 'Liderazgo':
+    case 'Negocios':
+      resultado = "Podrías sobresalir en Administración, Economía, Derecho o Gestión Empresarial.";
+      break;
+    case 'Exterior':
+    case 'Campo':
+      resultado = "Podrías orientarte a carreras como Agronomía, Biología o Turismo.";
+      break;
+    default:
+      resultado = "Sigue explorando tus intereses. ¡El futuro está en tus manos!";
+  }
+
+  document.getElementById('result-text').innerText = resultado;
   document.getElementById('result').classList.remove('hidden');
 });
+
 
