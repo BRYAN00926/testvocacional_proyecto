@@ -1,73 +1,96 @@
-document.getElementById('login-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const user = document.getElementById('username').value.trim();
-  const pass = document.getElementById('password').value.trim();
+document.addEventListener("DOMContentLoaded", function () {
+  const loginForm = document.getElementById("login-form");
+  const quizContainer = document.getElementById("quiz-container");
+  const loginContainer = document.getElementById("login-container");
+  const quizForm = document.getElementById("quiz-form");
+  const resultSection = document.getElementById("result");
+  const resultText = document.getElementById("result-text");
 
-  // Ejemplo básico, puedes agregar validación real o conexión backend
-  if (user && pass) {
-    document.getElementById('login-container').classList.add('hidden');
-    document.getElementById('quiz-container').classList.remove('hidden');
-  } else {
-    alert("Por favor, completa ambos campos.");
-  }
-});
+  // Control de pasos
+  const steps = document.querySelectorAll(".question-step");
+  let currentStep = 0;
 
-document.getElementById('quiz-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  const form = e.target;
-  const answers = [...form.querySelectorAll('input[type="radio"]:checked')];
-  
-  if (answers.length < 5) {
-    alert('Por favor responde todas las preguntas.');
-    return;
-  }
+  // Avanzar paso a paso
+  document.querySelectorAll(".next-btn").forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+      const inputs = steps[i].querySelectorAll("input[type='radio']");
+      let answered = false;
+      inputs.forEach(input => { if (input.checked) answered = true; });
 
-  const results = answers.map(ans => ans.value);
-  let resultado = '';
-  const contador = {};
-
-  results.forEach(res => {
-    contador[res] = (contador[res] || 0) + 1;
+      if (answered) {
+        steps[i].classList.add("hidden");
+        steps[i + 1].classList.remove("hidden");
+      } else {
+        alert("Por favor selecciona una respuesta antes de continuar.");
+      }
+    });
   });
 
-  let max = 0;
-  let final = '';
-  for (let clave in contador) {
-    if (contador[clave] > max) {
-      max = contador[clave];
-      final = clave;
+  // Validación de login
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    if (user && pass) {
+      loginContainer.classList.add("hidden");
+      quizContainer.classList.remove("hidden");
+      steps[0].classList.remove("hidden");
     }
-  }
+  });
 
-  switch (final) {
-    case 'Investigación':
-    case 'Ciencias':
-    case 'Analisis':
-      resultado = "Podrías destacar en carreras como Ingeniería, Medicina o Ciencias Exactas.";
-      break;
-    case 'Diseño':
-    case 'Creatividad':
-      resultado = "Tu camino puede estar en Artes, Comunicación, Publicidad o Diseño Gráfico.";
-      break;
-    case 'Servicio':
-    case 'Comunicacion':
-      resultado = "Tienes vocación para Psicología, Educación, Trabajo Social o Enfermería.";
-      break;
-    case 'Liderazgo':
-    case 'Negocios':
-      resultado = "Podrías sobresalir en Administración, Economía, Derecho o Gestión Empresarial.";
-      break;
-    case 'Exterior':
-    case 'Campo':
-      resultado = "Podrías orientarte a carreras como Agronomía, Biología o Turismo.";
-      break;
-    default:
-      resultado = "Sigue explorando tus intereses. ¡El futuro está en tus manos!";
-  }
+  // Resultado del test
+  quizForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const answers = Array.from(new FormData(quizForm).values());
 
-  document.getElementById('result-text').innerText = resultado;
-  document.getElementById('result').classList.remove('hidden');
+    const counts = {};
+    answers.forEach(ans => {
+      counts[ans] = (counts[ans] || 0) + 1;
+    });
+
+    // Elegir la categoría dominante
+    const dominant = Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
+
+    let career = "No se pudo determinar una vocación clara.";
+    switch (dominant) {
+      case "Investigación":
+      case "Ciencias":
+      case "Analisis":
+      case "Tecnología":
+      case "Técnicos":
+        career = "Podrías destacar en carreras como Ingeniería de Sistemas, Física, Matemáticas o Ciencia de Datos.";
+        break;
+      case "Diseño":
+      case "Creativo":
+      case "Arte":
+      case "Visuales":
+        career = "Te iría muy bien en Diseño Gráfico, Arquitectura, Comunicación Visual o Artes Multimedia.";
+        break;
+      case "Servicio":
+      case "Empatia":
+      case "Docente":
+      case "Sociales":
+        career = "Carreras como Psicología, Educación, Trabajo Social o Recursos Humanos serían ideales para ti.";
+        break;
+      case "Negocios":
+      case "Liderazgo":
+      case "Empresarial":
+      case "Estrategicos":
+        career = "Podrías estudiar Administración de Empresas, Marketing, Economía o Comercio Internacional.";
+        break;
+      case "Medicina":
+        career = "Podrías estudiar Medicina, Enfermería, Bioquímica o Tecnología Médica.";
+        break;
+      case "Ingeniería":
+        career = "Carreras como Ingeniería Industrial, Mecánica, Civil o Eléctrica podrían ser para ti.";
+        break;
+    }
+
+    quizForm.classList.add("hidden");
+    resultSection.classList.remove("hidden");
+    resultText.textContent = career;
+  });
 });
+
 
 
