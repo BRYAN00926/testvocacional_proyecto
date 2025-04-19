@@ -1,85 +1,73 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #e0eafc, #cfdef3);
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #74ebd5, #acb6e5);
   margin: 0;
   padding: 0;
+}
+
+.center {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  justify-content: center;
+  height: 100vh;
 }
 
 .container {
-  background-color: white;
-  width: 90%;
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   max-width: 600px;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
-}
-
-.hidden {
-  display: none;
+  width: 90%;
 }
 
 .title {
-  text-align: center;
-  margin-bottom: 1rem;
-  font-size: 1.8rem;
-  color: #1f3b75;
+  font-size: 2em;
+  margin-bottom: 15px;
 }
 
-.input-group {
-  margin-bottom: 1rem;
-}
-
-label {
-  display: block;
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  color: #333;
-}
-
-input[type="text"],
-input[type="password"] {
+input, button {
+  padding: 10px;
+  margin-top: 10px;
   width: 100%;
-  padding: 0.7rem;
-  border: 1px solid #ccc;
   border-radius: 8px;
-  font-size: 1rem;
+  border: 1px solid #ccc;
 }
 
-.submit-btn {
-  background-color: #1f3b75;
+button {
+  background-color: #4CAF50;
   color: white;
-  padding: 0.8rem 1.5rem;
   border: none;
-  border-radius: 10px;
-  font-size: 1rem;
   cursor: pointer;
-  margin-top: 1rem;
-  display: block;
-  width: 100%;
-  transition: background 0.3s ease;
 }
 
-.submit-btn:hover {
-  background-color: #3050a3;
+button:hover {
+  background-color: #45a049;
 }
 
-.question-step {
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-.result {
-  text-align: center;
-  padding-top: 1rem;
+.fade-in {
+  animation: fadeIn 1s ease-in;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+#progress-container {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#progress-bar {
+  height: 20px;
+  width: 0%;
+  background-color: #4CAF50;
+  transition: width 0.3s;
 }
 
 

@@ -1,137 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Test Vocacional Profesional</title>
-  <link rel="stylesheet" href="styles.css"/>
+    <meta charset="UTF-8">
+    <title>Inicio - Test Vocacional</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+    </style>
 </head>
-<body>
-
-  <!-- Login -->
-  <div class="container" id="login-container">
-    <h1 class="title">Test Vocacional Profesional</h1>
-    <p>Descubre qué carrera va más contigo según tus intereses, habilidades y personalidad.</p>
-    <form id="login-form">
-      <div class="input-group">
-        <label for="username">Usuario</label>
-        <input type="text" id="username" name="username" required />
-      </div>
-      <div class="input-group">
-        <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" required />
-      </div>
-      <button type="submit" class="submit-btn">Iniciar sesión</button>
-    </form>
-  </div>
-
-  <!-- Test por pasos -->
-  <div class="container hidden" id="quiz-container">
-    <h1 class="title">Responde con sinceridad</h1>
-    <form id="quiz-form">
-
-      <!-- Preguntas paso a paso -->
-      <div class="question-step" id="step-1">
-        <p>1. ¿Cuál de estas actividades disfrutas más?</p>
-        <label><input type="radio" name="q1" value="Investigación"> Leer y analizar datos</label>
-        <label><input type="radio" name="q1" value="Diseño"> Crear arte o contenido</label>
-        <label><input type="radio" name="q1" value="Servicio"> Ayudar a personas</label>
-        <label><input type="radio" name="q1" value="Negocios"> Liderar proyectos</label>
-        <button type="button" class="submit-btn next-btn">Siguiente</button>
-      </div>
-
-      <div class="question-step hidden" id="step-2">
-        <p>2. ¿Qué asignatura prefieres?</p>
-        <label><input type="radio" name="q2" value="Ciencias"> Matemáticas o Física</label>
-        <label><input type="radio" name="q2" value="Arte"> Arte o Literatura</label>
-        <label><input type="radio" name="q2" value="Sociales"> Psicología o Historia</label>
-        <label><input type="radio" name="q2" value="Empresarial"> Economía o Gestión</label>
-        <button type="button" class="submit-btn next-btn">Siguiente</button>
-      </div>
-
-      <div class="question-step hidden" id="step-3">
-        <p>3. ¿Qué habilidad se te da mejor?</p>
-        <label><input type="radio" name="q3" value="Analisis"> Analizar problemas</label>
-        <label><input type="radio" name="q3" value="Creatividad"> Ser creativo/a</label>
-        <label><input type="radio" name="q3" value="Empatia"> Escuchar y comprender</label>
-        <label><input type="radio" name="q3" value="Liderazgo"> Organizar y liderar</label>
-        <button type="button" class="submit-btn next-btn">Siguiente</button>
-      </div>
-
-      <div class="question-step hidden" id="step-4">
-        <p>4. ¿Cómo te visualizas en 10 años?</p>
-        <label><input type="radio" name="q4" value="Cientifico"> Investigando soluciones</label>
-        <label><input type="radio" name="q4" value="Artista"> Creando contenido</label>
-        <label><input type="radio" name="q4" value="Docente"> Enseñando o guiando</label>
-        <label><input type="radio" name="q4" value="Ejecutivo"> Dirigiendo una empresa</label>
-        <button type="button" class="submit-btn next-btn">Siguiente</button>
-      </div>
-
-      <div class="question-step hidden" id="step-5">
-        <p>5. ¿Qué ambiente prefieres?</p>
-        <label><input type="radio" name="q5" value="Interior"> Oficina o laboratorio</label>
-        <label><input type="radio" name="q5" value="Exterior"> Al aire libre</label>
-        <label><input type="radio" name="q5" value="Estudio"> En casa o estudio</label>
-        <label><input type="radio" name="q5" value="Eventos"> Eventos y reuniones</label>
-        <button type="button" class="submit-btn next-btn">Siguiente</button>
-      </div>
-
-      <div class="question-step hidden" id="step-6">
-        <p>6. ¿Qué herramienta prefieres usar?</p>
-        <label><input type="radio" name="q6" value="Tecnología"> Computadoras o software</label>
-        <label><input type="radio" name="q6" value="Manual"> Herramientas físicas</label>
-        <label><input type="radio" name="q6" value="Comunicación"> Lenguaje y expresión</label>
-        <label><input type="radio" name="q6" value="Arte"> Lápiz, pincel o cámara</label>
-        <button type="button" class="submit-btn next-btn">Siguiente</button>
-      </div>
-
-      <div class="question-step hidden" id="step-7">
-        <p>7. ¿Qué te motiva más?</p>
-        <label><input type="radio" name="q7" value="Cambio"> Transformar el mundo</label>
-        <label><input type="radio" name="q7" value="Estabilidad"> Tener seguridad económica</label>
-        <label><input type="radio" name="q7" value="Reconocimiento"> Logros personales</label>
-        <label><input type="radio" name="q7" value="Ayuda"> Servir a los demás</label>
-        <button type="button" class="submit-btn next-btn">Siguiente</button>
-      </div>
-
-      <div class="question-step hidden" id="step-8">
-        <p>8. ¿Qué tipo de proyectos prefieres?</p>
-        <label><input type="radio" name="q8" value="Investigativo"> Investigación</label>
-        <label><input type="radio" name="q8" value="Creativo"> Artístico o multimedia</label>
-        <label><input type="radio" name="q8" value="Humano"> Sociales o comunitarios</label>
-        <label><input type="radio" name="q8" value="Empresarial"> Empresariales</label>
-        <button type="button" class="submit-btn next-btn">Siguiente</button>
-      </div>
-
-      <div class="question-step hidden" id="step-9">
-        <p>9. ¿Qué profesión admiras?</p>
-        <label><input type="radio" name="q9" value="Medicina"> Médico/a</label>
-        <label><input type="radio" name="q9" value="Ingeniería"> Ingeniero/a</label>
-        <label><input type="radio" name="q9" value="Diseño"> Diseñador/a</label>
-        <label><input type="radio" name="q9" value="Docente"> Maestro/a</label>
-        <button type="button" class="submit-btn next-btn">Siguiente</button>
-      </div>
-
-      <div class="question-step hidden" id="step-10">
-        <p>10. ¿Qué tipo de problemas prefieres resolver?</p>
-        <label><input type="radio" name="q10" value="Técnicos"> Técnicos o lógicos</label>
-        <label><input type="radio" name="q10" value="Sociales"> Sociales o emocionales</label>
-        <label><input type="radio" name="q10" value="Visuales"> Visuales o estéticos</label>
-        <label><input type="radio" name="q10" value="Estrategicos"> Organizativos o estratégicos</label>
-        <button type="submit" class="submit-btn">Ver resultado</button>
-      </div>
-    </form>
-
-    <!-- Resultado final -->
-    <div id="result" class="result hidden">
-      <h2>Resultado de tu vocación</h2>
-      <p id="result-text"></p>
+<body class="center">
+    <div class="container fade-in">
+        <h1 class="title">Test Vocacional Profesional</h1>
+        <p>Ingresa tu nickname para comenzar el test</p>
+        <input type="text" id="nickname" placeholder="Tu nickname">
+        <button onclick="startTest()">Empezar Test</button>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <script>
+        function startTest() {
+            const nick = document.getElementById("nickname").value;
+            const nicknameInput = document.getElementById("nickname");
+            
+            // Validación
+            if (nick.trim() !== "") {
+                // Si el campo no está vacío, guarda el nickname y redirige
+                localStorage.setItem("nickname", nick);
+                window.location.href = "test.html";
+            } else {
+                // Si el campo está vacío, muestra una alerta y resalta el campo
+                alert("Por favor ingresa tu nickname.");
+                nicknameInput.classList.add("error");
+                setTimeout(() => {
+                    nicknameInput.classList.remove("error"); // Eliminar la clase después de un tiempo
+                }, 2000);
+            }
+        }
+    </script>
 </body>
 </html>
+
+
+
+
 
 
 
