@@ -1,0 +1,2 @@
+ARTHUR:{"Tecnología":3,"Salud":8,"Arte":8,"Negocios":3}
+BRIAN:{"Tecnología":3,"Salud":6,"Arte":8,"Negocios":3}
